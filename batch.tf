@@ -134,7 +134,7 @@ resource "aws_iam_role_policy_attachment" "job_policy_attachment" {
 resource "aws_security_group" "efs_security_group" {
   name        = "efs_security_group"
   description = "Allow NFS traffic."
-  vpc_id      = data.aws_vpc.default.id
+  vpc_id      = "vpc-03e9cdfedccd10720"
 lifecycle {
     create_before_destroy = true
   }
