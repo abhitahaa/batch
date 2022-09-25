@@ -1,12 +1,3 @@
-# Security Setup
-# Retrieves the default vpc for this region
-data "aws_vpc" "default" {
-  default = "vpc-03e9cdfedccd10720"
-}
-# Retrieves the subnet ids in the default vpc
-data "aws_subnets" "all_default_subnets" {
-  vpc_id = data.aws_vpc.default.id
-}
 # IAM Role for batch processing
 resource "aws_iam_role" "batch_role" {
   name               = "batch_role"
