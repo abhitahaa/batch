@@ -4,7 +4,7 @@ data "aws_vpc" "default" {
   default = true
 }
 # Retrieves the subnet ids in the default vpc
-data "aws_subnet_ids" "all_default_subnets" {
+data "aws_subnets" "all_default_subnets" {
   vpc_id = data.aws_vpc.default.id
 }
 # IAM Role for batch processing
@@ -124,8 +124,8 @@ resource "aws_iam_policy" "s3_policy" {
             "s3:Put*"
         ],
         "Resource": [
-          "${aws_s3_bucket.results_s3.arn}",
-          "${aws_s3_bucket.results_s3.arn}/*"
+          "*"
+          
         ]
     }
   ]
