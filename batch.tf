@@ -188,7 +188,7 @@ data "template_file" "efs_template_file" {
 # Batch Resources. 
 
 resource "aws_batch_compute_environment" "batch_environment" {
-  compute_environment_name = "batch-environment"
+  compute_environment_name = "new-batch-environment"
   compute_resources {
     instance_role = aws_iam_instance_profile.ec2_profile.arn
     launch_template {
@@ -214,7 +214,7 @@ tags = {
   }
 }
 resource "aws_batch_job_queue" "job_queue" {
-  name     = "job_queue"
+  name     = "newjob_queue"
   state    = "ENABLED"
   priority = 1
   compute_environments = [
@@ -226,7 +226,7 @@ tags = {
   }
 }
 resource "aws_batch_job_definition" "job" {
-  name = "job"
+  name = "newjob"
   type = "container"
   parameters = {}
   container_properties = <<CONTAINER_PROPERTIES
