@@ -241,7 +241,7 @@ resource "aws_batch_job_definition" "job" {
   parameters = {}
   container_properties = <<CONTAINER_PROPERTIES
 {
-  "image": "${aws_ecr_repository.ecr.repository_url}",
+  "image": "busybox",
   "jobRoleArn": "${aws_iam_role.job_role.arn}",
   "vcpus": 2,
   "memory": 1024,
