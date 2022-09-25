@@ -204,7 +204,7 @@ resource "aws_batch_compute_environment" "batch_environment" {
       aws_security_group.batch_security_group.id,
       aws_security_group.efs_security_group.id
     ]
-    subnets = "subnet-0445b23a7315ad939"
+    subnets = ["subnet-0445b23a7315ad939"]
     type    = "EC2"
   }
   service_role = aws_iam_role.batch_role.arn
