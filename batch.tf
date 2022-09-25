@@ -173,9 +173,8 @@ resource "aws_efs_file_system" "efs" {
   encrypted        = "true"
 }
 resource "aws_efs_mount_target" "efs_mount_target" {
-  count          = length(data.aws_subnets.all_default_subnets.ids)
   file_system_id = aws_efs_file_system.efs.id
-  subnet_id      = element(tolist(data.aws_subnets.all_default_subnets.ids), count.index)
+  subnet_id      = "subnet-0445b23a7315ad939"
   security_groups = [
     aws_security_group.efs_security_group.id,
     aws_security_group.batch_security_group.id
