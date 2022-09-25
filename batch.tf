@@ -29,7 +29,7 @@ resource "aws_iam_role_policy_attachment" "policy_attachment" {
 resource "aws_security_group" "batch_security_group" {
   name        = "batch_security_group"
   description = "AWS Batch Security Group for batch jobs"
-  vpc_id      = data.aws_vpc.default.id
+  vpc_id      = "vpc-03e9cdfedccd10720"
 egress {
     from_port   = 0
     to_port     = 65535
