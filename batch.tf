@@ -173,9 +173,9 @@ resource "aws_efs_file_system" "efs" {
   encrypted        = "true"
 }
 resource "aws_efs_mount_target" "efs_mount_target" {
-  count          = length(data.aws_subnet_ids.all_default_subnets.ids)
+  count          = length(data.aws_subnets.all_default_subnets.ids)
   file_system_id = aws_efs_file_system.efs.id
-  subnet_id      = element(tolist(data.aws_subnet_ids.all_default_subnets.ids), count.index)
+  subnet_id      = element(tolist(data.aws_subnets.all_default_subnets.ids), count.index)
   security_groups = [
     aws_security_group.efs_security_group.id,
     aws_security_group.batch_security_group.id
@@ -214,7 +214,7 @@ resource "aws_batch_compute_environment" "batch_environment" {
       aws_security_group.batch_security_group.id,
       aws_security_group.efs_security_group.id
     ]
-    subnets = data.aws_subnet_ids.all_default_subnets.ids
+    subnets = data.aws_subnets.all_default_subnets.ids
     type    = "EC2"
   }
   service_role = aws_iam_role.batch_role.arn
