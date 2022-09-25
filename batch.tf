@@ -1,7 +1,7 @@
 # Security Setup
 # Retrieves the default vpc for this region
 data "aws_vpc" "default" {
-  default = true
+  default = "vpc-03e9cdfedccd10720"
 }
 # Retrieves the subnet ids in the default vpc
 data "aws_subnets" "all_default_subnets" {
